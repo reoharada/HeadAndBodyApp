@@ -18,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="頭身を予測しようぜ！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zK2-rh-AsP">
-                                <rect key="frame" x="8" y="250.5" width="398" height="55"/>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="55"/>
+                                <rect key="frame" x="7" y="265.5" width="400" height="40"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -34,12 +34,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="HpX-Yf-g7K" secondAttribute="trailing" id="5X3-QU-RTW"/>
-                            <constraint firstItem="zK2-rh-AsP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="DAM-S2-R6x"/>
+                            <constraint firstItem="zK2-rh-AsP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DAM-S2-R6x"/>
                             <constraint firstItem="RVS-nZ-cAA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PBO-2h-r8y"/>
                             <constraint firstItem="HpX-Yf-g7K" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="TqR-4c-big"/>
                             <constraint firstItem="RVS-nZ-cAA" firstAttribute="top" secondItem="zK2-rh-AsP" secondAttribute="bottom" constant="64" id="dmC-XH-L0P"/>
                             <constraint firstItem="HpX-Yf-g7K" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="gQ2-S6-Z9Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zK2-rh-AsP" secondAttribute="trailing" constant="8" id="hum-3H-g5d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zK2-rh-AsP" secondAttribute="trailing" id="hum-3H-g5d"/>
                             <constraint firstItem="zK2-rh-AsP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pez-lq-B4C"/>
                             <constraint firstItem="HpX-Yf-g7K" firstAttribute="top" secondItem="RVS-nZ-cAA" secondAttribute="bottom" constant="16" id="poI-r0-fHl"/>
                             <constraint firstItem="zK2-rh-AsP" firstAttribute="centerX" secondItem="HpX-Yf-g7K" secondAttribute="centerX" id="ppV-zT-LXB"/>
