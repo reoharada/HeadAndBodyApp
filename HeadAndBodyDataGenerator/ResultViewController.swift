@@ -7,6 +7,14 @@
 
 import UIKit
 
+extension CGPoint {
+    func distance(point: CGPoint) -> Double {
+        let dx = Double(x - point.x)
+        let dy = Double(y - point.y)
+        return sqrt(dx*dx + dy*dy)
+    }
+}
+
 class ResultViewController: UIViewController {
 
     @IBOutlet weak var resultLabel: UILabel!
@@ -23,19 +31,46 @@ class ResultViewController: UIViewController {
         
         fetchRequest { value in
             DispatchQueue.main.async {
-                self.resultLabel.text = "\(value)頭身！"
+                print(value)
+                print("\(String(format: "%.2f", value))頭身！")
+                self.resultLabel.text = "\(String(format: "%.2f", value))頭身！"
                 self.resultLabel.isHidden = false
                 self.bodyRateByHead = value
                 self.resultTableView.reloadData()
                 self.addBodyView(value: value)
             }
         }
+        
     }
 
     func fetchRequest(handler: ((_ value: CGFloat) -> Void)? ) {
         
-        guard let url = URL(string: "https://ugygfcpmwe.execute-api.ap-northeast-1.amazonaws.com/") else { return }
-        let request = URLRequest(url: url)
+        print(bodyData)
+        print("頭から顎")
+        let distanceFromHeadToJaw = bodyData.headTopPos.distance(point: bodyData.jawPos)
+        print("肩幅")
+        let distanceShoulders = bodyData.leftShoulderPos.distance(point: bodyData.rightShoulderPos)
+        print("耳の間")
+        let distanceEars = bodyData.leftEarPos.distance(point: bodyData.rightEarPos)
+        print("耳から顎")
+        let distanceFromLeftEraToJaw = bodyData.leftEarPos.distance(point: bodyData.jawPos)
+        let distanceFromRightEraToJaw = bodyData.rightEarPos.distance(point: bodyData.jawPos)
+        guard let url = URL(string: "http://35.75.4.190") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let params: [String:Any] = [
+            "distance_from_head_to_jaw": distanceFromHeadToJaw,
+            "distance_shoulders": distanceShoulders,
+            "distance_ears": distanceEars,
+            "distance_from_left_era_to_jaw": distanceFromLeftEraToJaw,
+            "distance_from_right_era_to_jaw": distanceFromRightEraToJaw
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .fragmentsAllowed)
+        } catch {
+            print("パラメータ生成エラー")
+        }
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async { LoadingWindowManager.share.hide() }
             if error != nil { return print(error) }

@@ -110,12 +110,12 @@ extension ImageSelectViewController {
             let rect = CGRect(x: pos.x-size/2, y: pos.y-size/2, width: size, height: size)
             let circleView = CircleView(frame: rect)
             switch operationStatus {
-            case 0: bodyData.headTopPos = pos
-            case 1: bodyData.leftEarPos = pos
-            case 2: bodyData.rightEarPos = pos
-            case 3: bodyData.jawPos = pos
-            case 4: bodyData.leftShoulderPos = pos
-            default: bodyData.rightShoulderPos = pos
+            case 0: bodyData.headTopPos = circleView.center
+            case 1: bodyData.leftEarPos = circleView.center
+            case 2: bodyData.rightEarPos = circleView.center
+            case 3: bodyData.jawPos = circleView.center
+            case 4: bodyData.leftShoulderPos = circleView.center
+            default: bodyData.rightShoulderPos = circleView.center
             }
             selectedImageView.addSubview(circleView)
             if operationDataText.count - 1 == operationStatus {
